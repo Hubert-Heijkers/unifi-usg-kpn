@@ -103,7 +103,7 @@ In order for the file to by applied to the USG you need to upload it to the **Un
 
 There are several ways to publish the file to the Unifi controller.
 
-1. In case the Controller has an **SSH deamon running**. Connect with `SFTP` and `cd /usr/lib/unifi/data/sites/default` and `push config.gateway.json`
+1. In case the Controller has an **SSH deamon running**. Connect with `SFTP` and `cd /usr/lib/unifi/data/sites/default` and `put config.gateway.json`
 
 2. In (my) case the Controller is running in a **Docker container (without SSH deamon)** with a volume mapping. Connect with SFTP *to the docker host* and `/volume1/docker/unifi/data/sites/default` and `push config.gateway.json`.
 
@@ -123,11 +123,11 @@ The routed IP network sometimes changes, therefore the next-hop settings for rou
 
 1. Pull the `update_iptv_route.sh` from the repo
 2. `SFTP` into the **USG**
-3. Push the update script: `push update_iptv_route.sh`
+3. Push the update script: `put update_iptv_route.sh`
 4. `SSH` into the **USG**
 5. Move the file: `mv update_iptv_route.sh /config/scripts/post-config.d/`
 6. Make the file executable `chmod +x /config/scripts/post-config.d/update_iptv_route.sh`
-7. Execute the script ./update_iptv_route.sh
+7. Execute the script `/config/scripts/post-config.d/update_iptv_route.sh`
 
 ### 5. Celebrate!.
 Wait for it.... you're done. The Internet and IPTV should be working. Test you're IPTV by rebooting the decoders and see if they come back online. If not... read below.
